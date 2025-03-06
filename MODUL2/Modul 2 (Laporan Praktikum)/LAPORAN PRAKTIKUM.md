@@ -608,9 +608,9 @@ func main() {
 }
 ```
 Jawab:
-a. Jika nilai NAM diberikan sebesar 80.1, program akan mengeluarkan "A", padahal seharusnya "AB", jadi program tidak sesuai dengan spesifikasi soal.
+a. Ketika program dijalankan, output yang ditampilkan tidak sesuai dengan kriteria. Dikarenakan terdapat beberapa kesalahan pada program.
 
-b. Kesalahan utama adalah penggunaan if terpisah tanpa else if, sehingga setiap kondisi tetap dicek meskipun yang sebelumnya sudah terpenuhi. Selain itu, batas kategori tidak dibuat dengan benar, seperti pada nilai di atas 80 yang langsung masuk "A" tanpa memperhitungkan batas atasnya.
+b. Kesalahan utama dalam program adalah penggunaan variabel nam untuk menyimpan string, urutan kondisi if-else yang tidak menangani rentang nilai dengan benar, dan kurangnya batas atas dalam beberapa kondisi, sehingga program seharusnya menggunakan variabel nmk untuk hasil NMK dan memastikan setiap kondisi mencakup rentang nilai yang tepat dengan &&.
 
 c. Agar program benar, harus menggunakan else if supaya nilai hanya masuk ke satu kategori yang sesuai. Jika diperbaiki, masukan 93.5, 70.6, dan 49.5 akan menghasilkan keluaran "A", "B", dan "D" seperti yang diharapkan.
 
@@ -618,60 +618,33 @@ Code yang sudah diperbaiki
 ```go
 package main
 
-  
-
 import "fmt"
-
-  
 
 func main() {
 
-    var nam float64
+	var nam float64
+	var nmk string
 
-    var nmk string
+	fmt.Print("Nilai akhir mata kuliah: ")
+	fmt.Scanln(&nam)
 
-  
+	if nam > 80 {
+		nmk = "A"
+	} else if nam > 72.5 && nam <= 80 {
+		nmk = "AB"
+	} else if nam > 65 && nam <= 72.5 {
+		nmk = "B"
+	} else if nam > 57.5 && nam <= 65 {
+		nmk = "BC"
+	} else if nam > 50 && nam <= 57.5 {
+		nmk = "C"
+	} else if nam > 40 && nam <= 50 {
+		nmk = "D"
+	} else if nam <= 40 {
+		nmk = "E"
+	}
 
-    fmt.Print("Nilai akhir mata kuliah: ")
-
-    fmt.Scanln(&nam)
-
-  
-
-    if nam > 80 {
-
-        nmk = "A"
-
-    } else if nam > 72.5 {
-
-        nmk = "AB"
-
-    } else if nam > 65 {
-
-        nmk = "B"
-
-    } else if nam > 57.5 {
-
-        nmk = "BC"
-
-    } else if nam > 50 {
-
-        nmk = "C"
-
-    } else if nam > 40 {
-
-        nmk = "D"
-
-    } else {
-
-        nmk = "E"
-
-    }
-
-  
-
-    fmt.Println("Nilai mata kuliah:", nmk)
-
+	fmt.Println("Nilai mata kuliah:", nmk)
 }
 ```
 Output:
@@ -679,7 +652,7 @@ Output:
 >![](Output/gambar2C2.png)
 
 Penjelasan:
-Program ini digunakan untuk menentukan nilai huruf berdasarkan nilai akhir mata kuliah. Pengguna diminta memasukkan nilai akhirnya, lalu program membandingkan nilai tersebut dengan rentang tertentu untuk menentukan huruf yang sesuai. Jika nilainya lebih dari **80**, maka mendapat **A**, jika lebih dari **72.5** mendapat **AB**, dan seterusnya hingga nilai di bawah **40** yang mendapat **E**. Setelah menentukan huruf, program mencetak hasil nilai mata kuliah.
+Program ini menentukan nilai huruf berdasarkan nilai akhir mata kuliah yang dimasukkan oleh pengguna. Program membaca nilai angka, lalu membandingkannya dengan beberapa rentang nilai untuk menentukan nilai huruf. Jika nilai lebih dari 80, maka nilainya A. Jika di antara 72.5 sampai 80, nilainya AB, dan seterusnya hingga 40 atau kurang yang mendapat E. Program kemudian mencetak hasil nilai huruf yang sesuai.
 
 
 **nomor 3**
