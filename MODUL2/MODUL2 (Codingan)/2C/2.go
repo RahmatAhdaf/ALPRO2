@@ -45,6 +45,7 @@ package main
 import "fmt"
 
 func main() {
+
 	var nam float64
 	var nmk string
 
@@ -53,21 +54,20 @@ func main() {
 
 	if nam > 80 {
 		nmk = "A"
-	} else if nam > 72.5 {
+	} else if nam > 72.5 && nam <= 80 {
 		nmk = "AB"
-	} else if nam > 65 {
+	} else if nam > 65 && nam <= 72.5 {
 		nmk = "B"
-	} else if nam > 57.5 {
+	} else if nam > 57.5 && nam <= 65 {
 		nmk = "BC"
-	} else if nam > 50 {
+	} else if nam > 50 && nam <= 57.5 {
 		nmk = "C"
-	} else if nam > 40 {
+	} else if nam > 40 && nam <= 50 {
 		nmk = "D"
-	} else {
+	} else if nam <= 40 {
 		nmk = "E"
 	}
 
 	fmt.Println("Nilai mata kuliah:", nmk)
 }
-
 
